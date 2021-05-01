@@ -29,7 +29,7 @@ public class CenterDaoimp implements CenterDao{
 	@Override
 	public List<Center> getCenters() {
 		Session session = entityManager.unwrap(Session.class);
-		List<Center> centers = session.createQuery("from Center", Center.class).getResultList();
+		List<Center> centers = session.createSQLQuery("select * from center").getResultList();
 		return centers;
 	}
 
