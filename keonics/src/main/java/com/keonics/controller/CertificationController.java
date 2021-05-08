@@ -51,7 +51,7 @@ public class CertificationController {
 	}
 	
 	@DeleteMapping("/deletecertification/{id}")
-	public Certification deleteCertification(int id) {
+	public Certification deleteCertification(@PathVariable int id) {
 		
 		return certificationService.deleteCertification(id);
 		

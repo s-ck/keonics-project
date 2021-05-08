@@ -60,7 +60,7 @@ public class CenterDaoimp implements CenterDao{
 	@Override
 	public List<Center> getCenters(int id) {
 		Session session = entityManager.unwrap(Session.class);
-		List<Object[] > list = session.createSQLQuery("SELECT * FROM employe.center where user_id = "+id).getResultList();
+		List<Object[] > list = session.createSQLQuery("SELECT * FROM center where user_id = "+id).getResultList();
 		int user_id = 0;
 		for(Object [] obj : list) {
 			user_id = Integer.parseInt(obj[0].toString());

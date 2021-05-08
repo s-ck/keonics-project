@@ -83,6 +83,8 @@ public class CertificationDaoimp implements CertificationDao{
 		
 		Certification certification = session.get(Certification.class, id);
 		
+		session.delete(certification);
+		
 		return certification;
 		
 	}

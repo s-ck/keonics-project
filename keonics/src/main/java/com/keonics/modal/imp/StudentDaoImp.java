@@ -58,9 +58,13 @@ public class StudentDaoImp implements StudentDao{
 	public Student addStudent(Student student) {
 		
 		Session session = entityManager.unwrap(Session.class);
-		
-		session.saveOrUpdate(student);
-		
+		try 
+		{
+			session.saveOrUpdate(student);
+		}
+		catch (Exception e) {
+			
+		}
 		return student;
 	}
 

@@ -27,13 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable()
-			.authorizeRequests()
-			.antMatchers("/api/**")
-			.permitAll()
-			.anyRequest().authenticated()
-			.and()
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		String[] resources = new String[] { "/", "/api/**", "/resources/static/**", "/resources/static/**/**",
+				"/resources/static/**/**/**", "/**.css", "/**/**.css", "/**/**/**.css", "/favicon.ico", "/**/*.png",
+				"/**/*.gif", "/**/*.svg", "/**/*.jpg", "/**/*.html", "/**/*.css", "/**/*.js" };
+		http.cors().and().csrf().disable().authorizeRequests().antMatchers(resources).permitAll().anyRequest()
+				.authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
 		http.addFilterBefore(jwtAuthenticationfilter, UsernamePasswordAuthenticationFilter.class);
 	}
