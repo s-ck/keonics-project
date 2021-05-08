@@ -30,8 +30,8 @@ public class BatchDaoimp implements BatchDao{
 	public List<Batch> getBatchs() {
 		
 		Session session = entityManager.unwrap(Session.class);
-		String sql = "select b.batch_name,b.start_date,b.end_date,c.course,s.firstname,centername from batch b,student s,course c,center cent,batch_students bs where b.center_id = cent.id"
-				+ " and b.center_id = c.id and b.id = bs.batch_id and s.id = bs.students_id";
+		String sql = "select b.batch_name,b.start_date,b.end_date,c.course,s.firstname,centername from erp.batch b,erp.student s,erp.course c,erp.center cent,erp.batch_students bs where b.center_id = cent.id\r\n"
+				+ "and b.id = bs.batch_id and s.id = bs.students_id";
 		List<Batch> list = session.createSQLQuery(sql).getResultList();
 		return list;
 		
